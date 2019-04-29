@@ -10,20 +10,40 @@
 package main
 
 // Add imports
+import "fmt"
 
 // main is the entry point for the application.
 func main() {
 
 	// Declare variables that are set to their zero value.
+	var a int
+	var b bool
+	var c string
+	var d float64
 
 	// Display the value of those variables.
+	fmt.Printf("var a int \t %T [%v] \n", a, a)
+	fmt.Printf("var b bool \t %T [%v] \n", b, b)
+	fmt.Printf("var c string \t %T [%v] \n", c, c)
+	fmt.Printf("var d float64 \t %T [%v] \n\n", d, d)
 
 	// Declare variables and initialize.
 	// Using the short variable declaration operator.
+	aa := 10
+	bb := true
+	cc := "hello again"
+	dd := 10.002
 
 	// Display the value of those variables.
+	fmt.Printf(" aa := 10 \t %T [%v] \n", aa, aa)
+	fmt.Printf(" bb := true \t %T [%v] \n", bb, bb)
+	fmt.Printf(" cc := \"hello\" \t %T [%v] \n", cc, cc)
+	fmt.Printf(" dd := 10.002 \t %T [%v] \n\n", dd, dd)
 
 	// Perform a type conversion.
 
+	aaa := float64(10)
+
 	// Display the value of that variable.
+	fmt.Printf("aaa := float64(10) \t %T [%v] \n", aaa, aaa)
 }
