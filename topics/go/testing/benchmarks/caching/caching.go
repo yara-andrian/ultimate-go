@@ -79,6 +79,7 @@ func LinkedListTraverse() int {
 	return ctr
 }
 
+// ColumnTraverse Not using the cache
 // ColumnTraverse traverses the matrix linearly down each column.
 func ColumnTraverse() int {
 	var ctr int
@@ -94,6 +95,7 @@ func ColumnTraverse() int {
 	return ctr
 }
 
+// RowTraverse Mechanical Sympathy that uses caching strategy
 // RowTraverse traverses the matrix linearly down each row.
 func RowTraverse() int {
 	var ctr int

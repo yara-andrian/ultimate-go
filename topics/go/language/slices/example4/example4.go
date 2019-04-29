@@ -10,16 +10,18 @@ import "fmt"
 func main() {
 
 	// Declare a nil slice of strings.
-	var data []string
+	// var data []string
+	data := make([]string, 0, 100)
 
 	// Capture the capacity of the slice.
 	lastCap := cap(data)
 
 	// Append ~100k strings to the slice.
-	for record := 1; record <= 1e5; record++ {
+	for record := 1; record <= 5; record++ {
 
 		// Use the built-in function append to add to the slice.
 		value := fmt.Sprintf("Rec: %d", record)
+		// append creates a new array
 		data = append(data, value)
 
 		// When the capacity of the slice changes, display the changes.

@@ -31,4 +31,21 @@ func main() {
 	for i := 0; i < len(numbers); i++ {
 		fmt.Println(i, numbers[i])
 	}
+
+	type users struct {
+		name string
+		age  int
+	}
+
+	bill := users{
+		name: "andrian",
+		age:  12,
+	}
+
+	classmates := [4]users{bill, bill}
+
+	for i := 0; i < len(classmates); i++ {
+		fmt.Printf("%+v", classmates[i])
+	}
+
 }
