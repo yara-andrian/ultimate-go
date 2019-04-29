@@ -23,9 +23,9 @@ func main() {
 // always an address and points to values of type int.
 //go:noinline
 func increment(inc *int) {
-
+	n := *inc
 	// Increment the "value of" count that the "pointer points to".
-	*inc++
+	*inc = n + 1
 
 	println("inc:\tValue Of[", inc, "]\tAddr Of[", &inc, "]\tValue Points To[", *inc, "]")
 }
