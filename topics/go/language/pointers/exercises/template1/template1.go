@@ -9,17 +9,34 @@
 // _value that the pointer points to_.
 package main
 
+import "fmt"
+
 // Add imports.
 
 func main() {
 
 	// Declare an integer variable with the value of 20.
-
+	someNumber := 20
 	// Display the address of and value of the variable.
-
+	fmt.Println("someNumber:\tValue Of[", someNumber, "]\tAddr Of[", &someNumber, "]")
 	// Declare a pointer variable of type int. Assign the
 	// address of the integer variable above.
-
+	numPoint := &someNumber
 	// Display the address of, value of and the value the pointer
 	// points to.
+
+	println("P lives at", &numPoint)
+	println("P values = ", numPoint)
+	println("P points to", *numPoint)
+
+	increment(numPoint)
+	fmt.Println("point *abc:\tValue Of[", *numPoint, "]\tAddr Of[", &numPoint, "]")
+}
+
+func increment(inc *int) {
+	n := *inc
+
+	*inc = n + 1
+
+	println("inc:\tValue Of[", *inc, "]\tAddr Of[", &inc, "]")
 }
