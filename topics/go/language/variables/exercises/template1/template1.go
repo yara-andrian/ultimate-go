@@ -20,6 +20,7 @@ func main() {
 	var b bool
 	var c string
 	var d float64
+	var e string
 
 	// Display the value of those variables.
 	fmt.Printf("var a int \t %T [%v] \n", a, a)
@@ -33,12 +34,14 @@ func main() {
 	bb := true
 	cc := "hello again"
 	dd := 10.002
+	e = "Andrian"
 
 	// Display the value of those variables.
 	fmt.Printf(" aa := 10 \t %T [%v] \n", aa, aa)
 	fmt.Printf(" bb := true \t %T [%v] \n", bb, bb)
 	fmt.Printf(" cc := \"hello\" \t %T [%v] \n", cc, cc)
-	fmt.Printf(" dd := 10.002 \t %T [%v] \n\n", dd, dd)
+	fmt.Printf(" dd := 10.002 \t %T [%v] \n", dd, dd)
+	fmt.Printf(" e := \"Andrian\" \t %T [%v] \n\n", e, e)
 
 	// Perform a type conversion.
 

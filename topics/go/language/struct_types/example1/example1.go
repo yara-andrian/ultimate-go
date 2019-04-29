@@ -8,9 +8,9 @@ import "fmt"
 
 // example represents a type with different fields.
 type example struct {
-	flag    bool
-	counter int16
-	pi      float32
+	flag    bool    //1 Byte
+	counter int16   //2 Bytes
+	pi      float32 //4 Bytes
 }
 
 func main() {
