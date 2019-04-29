@@ -7,6 +7,8 @@
 // Declare and initialize an anonymous struct type with the same three fields. Display the value.
 package main
 
+import "fmt"
+
 // Add imports.
 
 // Add user type and provide comment.
@@ -14,10 +16,34 @@ package main
 func main() {
 
 	// Declare variable of type user and init using a struct literal.
+	type json struct {
+		name        string
+		age         int
+		phoneNumber string
+	}
+
+	var e3 struct {
+		name string
+		age  int
+	}
+
+	var e1 json
 
 	// Display the field values.
+	fmt.Printf("this is the json struct %+v\n", e1)
 
 	// Declare a variable using an anonymous struct.
+	e2 := json{
+		name:        "andrian",
+		age:         10,
+		phoneNumber: "12345678",
+	}
 
 	// Display the field values.
+	fmt.Println("Name", e2.name)
+	fmt.Println("Age", e2.age)
+	fmt.Println("PhoneNumber", e2.phoneNumber)
+
+	e3.name = "Andrian"
+	fmt.Printf("%+v \n", e3)
 }
