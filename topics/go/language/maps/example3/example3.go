@@ -19,7 +19,7 @@ type users []user
 func main() {
 
 	// Declare and make a map that uses a slice as the key.
-	u := make(map[users]int)
+	u := make(map[string]users)
 
 	// ./example3.go:22: invalid map key type users
 

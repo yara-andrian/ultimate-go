@@ -16,7 +16,7 @@ type user struct {
 }
 
 // notify implements a method with a value receiver.
-func (u user) notify() {
+func (u *user) notify() {
 	fmt.Printf("Sending User Email To %s<%s>\n",
 		u.name,
 		u.email)
@@ -49,8 +49,8 @@ func main() {
 
 	// Iterate over the slice of users switching
 	// semantics. Not Good!
-	for _, u := range users {
-		u.changeEmail("it@wontmatter.com")
+	for i := range users {
+		users[i].changeEmail("it@wontmatter.com")
 	}
 
 	// Exception example: Using pointer semantics

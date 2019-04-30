@@ -5,6 +5,8 @@
 // of an element in a map.
 package main
 
+import "fmt"
+
 // player represents someone playing our game.
 type player struct {
 	name  string
@@ -20,8 +22,8 @@ func main() {
 	}
 
 	// Trying to take the address of a map element fails.
-	anna := &players["anna"]
-	anna.score++
+	// anna := &players["anna"]
+	// anna.score++
 
 	// ./example4.go:23:10: cannot take the address of players["anna"]
 
@@ -29,4 +31,6 @@ func main() {
 	player := players["anna"]
 	player.score++
 	players["anna"] = player
+
+	fmt.Printf("%+v", players)
 }
