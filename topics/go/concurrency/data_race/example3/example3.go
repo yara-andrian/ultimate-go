@@ -19,7 +19,7 @@ var mutex sync.Mutex
 func main() {
 
 	// Number of goroutines to use.
-	const grs = 2
+	const grs = 20000
 
 	// wg is used to manage concurrency.
 	var wg sync.WaitGroup
@@ -32,7 +32,8 @@ func main() {
 
 				// Only allow one goroutine through this critical section at a time.
 				mutex.Lock()
-				{
+				{ // critical section of Go
+					// a block of scope
 					// Capture the value of counter.
 					value := counter
 

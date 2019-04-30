@@ -22,27 +22,27 @@ func init() {
 }
 
 func main() {
-
 	// wg is used to manage concurrency.
 	var wg sync.WaitGroup
-	wg.Add(2)
 
 	fmt.Println("Create Goroutines")
 
 	// Create the first goroutine and manage its lifecycle here.
+	wg.Add(1)
 	go func() {
 		printHashes("A")
 		wg.Done()
 	}()
 
 	// Create the second goroutine and manage its lifecycle here.
+	wg.Add(1)
 	go func() {
 		printHashes("B")
 		wg.Done()
 	}()
 
 	// Wait for the goroutines to finish.
-	fmt.Println("Waiting To Finish")
+	// fmt.Println("Waiting To Finish")
 	wg.Wait()
 
 	fmt.Println("Terminating Program")
@@ -54,7 +54,7 @@ func printHashes(prefix string) {
 
 	// print each has from 1 to 10. Change this to 50000 and
 	// see how the scheduler behaves.
-	for i := 1; i <= 50000; i++ {
+	for i := 1; i <= 500; i++ {
 
 		// Convert i to a string.
 		num := strconv.Itoa(i)
@@ -63,7 +63,7 @@ func printHashes(prefix string) {
 		sum := sha1.Sum([]byte(num))
 
 		// Print prefix: 5-digit-number: hex encoded hash
-		fmt.Printf("%s: %05d: %x\n", prefix, i, sum)
+		fmt.Printf("%s: %03d: %x\n", prefix, i, sum)
 	}
 
 	fmt.Println("Completed", prefix)

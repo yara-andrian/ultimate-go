@@ -13,21 +13,28 @@ import (
 // scores holds values incremented by multiple goroutines.
 var scores = make(map[string]int)
 
+// Mutex is used to define a critical section of code.
+var Mutex sync.Mutex
+
 func main() {
 	var wg sync.WaitGroup
 	wg.Add(2)
 
 	go func() {
+		Mutex.Lock()
 		for i := 0; i < 1000; i++ {
 			scores["A"]++
 		}
+		Mutex.Unlock()
 		wg.Done()
 	}()
 
 	go func() {
+		Mutex.Lock()
 		for i := 0; i < 1000; i++ {
 			scores["B"]++
 		}
+		Mutex.Unlock()
 		wg.Done()
 	}()
 

@@ -21,7 +21,7 @@ func main() {
 
 	// wg is used to manage concurrency.
 	var wg sync.WaitGroup
-	wg.Add(2)
+	wg.Add(3)
 
 	fmt.Println("Start Goroutines")
 
@@ -34,6 +34,11 @@ func main() {
 	// Create a goroutine from the uppercase function.
 	go func() {
 		uppercase()
+		wg.Done()
+	}()
+
+	go func() {
+		mixedcase()
 		wg.Done()
 	}()
 
@@ -51,6 +56,17 @@ func lowercase() {
 	for count := 0; count < 3; count++ {
 		for r := 'a'; r <= 'z'; r++ {
 			fmt.Printf("%c ", r)
+		}
+	}
+}
+
+// mixedcase
+func mixedcase() {
+
+	// Display the alphabet three times
+	for count := 0; count < 3; count++ {
+		for r := 1; r <= 10; r++ {
+			fmt.Printf("%d ", r)
 		}
 	}
 }

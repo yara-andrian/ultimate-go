@@ -12,7 +12,10 @@ import (
 )
 
 // numbers maintains a set of random numbers.
-var numbers []int
+var (
+	numbers []int
+	Mutex   sync.Mutex
+)
 
 // init is called prior to main.
 func init() {
@@ -30,14 +33,18 @@ func main() {
 
 	// Create three goroutines to generate random numbers.
 	for i := 0; i < grs; i++ {
+
 		go func() {
 			random(10)
 			wg.Done()
 		}()
+
 	}
 
 	// Wait for all the goroutines to finish.
 	wg.Wait()
+
+	fmt.Println("I am done with appending numbers to the slice")
 
 	// Display the set of random numbers.
 	for i, number := range numbers {
@@ -51,6 +58,11 @@ func random(amount int) {
 	// Generate as many random numbers as specified.
 	for i := 0; i < amount; i++ {
 		n := rand.Intn(100)
-		numbers = append(numbers, n)
+		Mutex.Lock()
+		{
+			// do not lock the processes to early only the critical portion
+			numbers = append(numbers, n)
+		}
+		Mutex.Unlock()
 	}
 }
