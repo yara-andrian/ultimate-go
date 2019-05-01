@@ -10,7 +10,6 @@ import (
 	"fmt"
 	"math/rand"
 	"runtime"
-	"sync"
 )
 
 func main() {
@@ -84,5 +83,18 @@ func main() {
 
 	// Print the values in our slice.
 	fmt.Printf("Result count: %d\n", len(nums))
+	fmt.Println(nums)
+}
+
+// KISS
+func sync() {
+	var nums []int
+	for len(nums) < 100 {
+		n := rand.Intn(1000)
+		if n%2 != 0 {
+			nums = append(nums, n)
+		}
+	}
+
 	fmt.Println(nums)
 }

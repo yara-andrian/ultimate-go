@@ -6,6 +6,11 @@ package main
 
 import "fmt"
 
+// reader is an interface
+type reader interface {
+	read(b []byte) (int, error)
+}
+
 // file defines a system file.
 type file struct {
 	name string
@@ -37,28 +42,15 @@ func main() {
 	p := pipe{"cfg_service"}
 
 	// Call each retrieve function for each concrete type.
-	retrieveFile(f)
-	retrievePipe(p)
+	retrieve(f)
+	retrieve(p)
 }
 
 // retrieveFile can read from a file and process the data.
-func retrieveFile(f file) error {
+func retrieve(r reader) error {
 	data := make([]byte, 100)
 
-	len, err := f.read(data)
-	if err != nil {
-		return err
-	}
-
-	fmt.Println(string(data[:len]))
-	return nil
-}
-
-// retrievePipe can read from a pipe and process the data.
-func retrievePipe(p pipe) error {
-	data := make([]byte, 100)
-
-	len, err := p.read(data)
+	len, err := r.read(data)
 	if err != nil {
 		return err
 	}

@@ -20,11 +20,11 @@ func init() {
 
 func main() {
 
-	waitForResult()
+	// waitForResult()
 	// fanOut()
 
 	// waitForTask()
-	// pooling()
+	pooling()
 
 	// Advanced patterns
 	// fanOutSem()
@@ -62,22 +62,22 @@ func waitForResult() {
 // are received by you. No given employee needs an immediate guarantee that you
 // received their result.
 func fanOut() {
-	emps := 2000
-	ch := make(chan string, emps)
+	students := 2000
+	ch := make(chan string, students) //
 
-	for e := 0; e < emps; e++ {
-		go func(emp int) {
+	for e := 0; e < students; e++ {
+		go func(stud int) {
 			time.Sleep(time.Duration(rand.Intn(200)) * time.Millisecond)
 			ch <- "paper"
-			fmt.Println("employee : sent signal :", emp)
+			fmt.Println("employee : sent signal :", stud)
 		}(e)
 	}
 
-	for emps > 0 {
+	for students > 0 {
 		p := <-ch
-		emps--
+		students--
 		fmt.Println(p)
-		fmt.Println("manager : recv'd signal :", emps)
+		fmt.Println("manager : recv'd signal :", students)
 	}
 
 	time.Sleep(time.Second)
@@ -114,6 +114,7 @@ func waitForTask() {
 func pooling() {
 	ch := make(chan string)
 
+	// g is the number of logical CPU
 	g := runtime.NumCPU()
 	for e := 0; e < g; e++ {
 		go func(emp int) {

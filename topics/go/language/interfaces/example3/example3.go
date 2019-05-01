@@ -10,8 +10,8 @@ import "fmt"
 type duration int
 
 // notify implements the notifier interface.
-func (d *duration) notify() {
-	fmt.Println("Sending Notification in", *d)
+func (d duration) notify() {
+	fmt.Println("Sending Notification in", d)
 }
 
 func main() {

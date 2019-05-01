@@ -10,30 +10,40 @@
 package main
 
 // Add imports.
+import (
+	"fmt"
+	"math/rand"
+)
 
 // Declare constant for number of goroutines.
-
-func init() {
-	// Seed the random number generator.
-}
+var numbGo int
 
 func main() {
+	room := 100
 
 	// Create the buffered channel with room for
+	buffChannel := make(chan int, room)
 	// each goroutine to be created.
 
 	// Iterate and launch each goroutine.
-	{
-
-		// Create an anonymous function for each goroutine that
-		// generates a random number and sends it on the channel.
+	for i := 0; i < room; i++ {
+		go func() {
+			buffChannel <- rand.Intn(1000)
+		}()
 	}
-
+	// Create an anonymous function for each goroutine that
+	// generates a random number and sends it on the channel.
+	var nums []int
 	// Create a variable to be used to track received messages.
 	// Set the value to the number of goroutines created.
+	for room > 0 {
+		p := <-buffChannel
+		nums = append(nums, p)
+		room--
+	}
 
 	// Iterate receiving each value until they are all received.
 	// Store them in a slice of ints.
-
+	fmt.Println(nums)
 	// Print the values in our slice.
 }
